@@ -1,30 +1,30 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const StopWatch = () => {
     
 
     const [time,setTime] = useState(0);
     const [isRunning,setIsRunning] = useState(false);
-
-    const [interval,setInterval] = useState();
+    
+    let intarval = useRef();
 
     const increaseTime = () => {
-        setTime((time)=>time+1);
+        setTime((previousValue)=>{
+            return previousValue + 1;
+        });
     }
-    const clickStart = () => {
-        setInterval(setInterval(increaseTime,1000))
-        
+    const handleStart = () => {
+        intarval.current = setInterval(increaseTime,1000);
+        console.log(intarval);
         setIsRunning(true);
     }
-    console.log("interval",interval);
-
-    const clickStop = () => {
+    const handleStop  = ()=>{
+        console.log("handle stop")
         setIsRunning(false);
-
-        clearInterval(interval);
+        console.log( intarval.current);
+        clearInterval( intarval.current);
     }
-    
-    
+
 
     return ( 
         <div>
@@ -33,7 +33,7 @@ const StopWatch = () => {
             </div> 
             <button 
                 className={isRunning?"btn btn-warning":"btn btn-primary"} 
-                onClick={isRunning?clickStop:clickStart}
+                onClick={isRunning?handleStop:handleStart}
             >
                 {isRunning?"Stop":"Start"}
             </button>
