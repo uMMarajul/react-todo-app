@@ -1,5 +1,5 @@
-import Card from "./components/Card.component";
 import Navbar from "./components/Navbar.component";
+import StopWatch from "./components/Stopwatch.component";
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div>
       <Navbar/>
       <div className="container d-flex justify-content-center mt-3">
-          <Card/>
+          <StopWatch/>
       </div>
       
     </div>

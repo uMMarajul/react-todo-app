@@ -1,8 +1,9 @@
 
+import Form from "./Form.component";
 import Item from "./Item.componet";
 function Card(){
     return(
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card" style={{width: "30rem"}}>
             <div className="card-header">
                 Todo
             </div>
@@ -13,6 +14,9 @@ function Card(){
                 <Item data="forth item"/>
                 <Item data="fifth item" />
             </ul>
+            <div className="card-footer">
+                <Form />
+            </div>
         </div>
     );
 }
